@@ -23,10 +23,7 @@ int _printf(const char *format, ...)
 		switch (c_ase)
 		{
 			case 0:
-				write(1, "%%", 2);
-				i++;
-				cpt++;
-				cpt++;
+				_print_percent(i, cpt);
 				break;
 			case 1:
 				c_arg = va_arg(varg, int);
@@ -45,8 +42,7 @@ int _printf(const char *format, ...)
 				}
 				break;
 			case 3:
-				write(1, &c, 1);
-				cpt++;
+				_print_c(c, cpt);
 		}
 	}
 	return (cpt);
@@ -110,5 +106,35 @@ int size_of_string(char *arg)
 		pointer++;
 	}
 	return (cpt);
+}
+
+
+/**
+ * _print_percent -to print %%
+ * @i: index
+ * @cpt: count
+ */
+
+
+void _print_percent(int i, int cpt)
+{
+	write(1, "%%", 2);
+	i++;
+	cpt++;
+	cpt++;
+}
+
+/**
+ * _print_c -for printing a character
+ * Return: none
+ * @c: char to print
+ * @cpt: count
+ */
+
+
+void _print_c(char c, int cpt)
+{
+	write(1, &c, 1);
+	cpt++;
 }
 
