@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 				cpt++;
 				break;
 			case 1:
-				c_arg = va_arg(varg, char);
+				c_arg = va_arg(varg, int);
 				write(1, &c_arg, 1);
 				i++;
 				cpt++;

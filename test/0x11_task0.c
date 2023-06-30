@@ -9,11 +9,10 @@
 int _printf(const char *format, ...)
 {
 	va_list varg;
-	int i, c_ase, string_size;
+	int cpt, i, c_ase, string_size, tmp;
 	char c, c_arg, *s_arg;
 
 	cpt = 0;
-	c = 30;
 	i = 0;
 	string_size = 0;
 	va_start(varg, format);
@@ -26,22 +25,31 @@ int _printf(const char *format, ...)
 			case 0:
 				write(1, "%%", 2);
 				i++;
+				cpt++;
+				cpt++;
 				break;
 			case 1:
-				c_arg = va_arg(varg, char);
+				c_arg = va_arg(varg, int);
 				write(1, &c_arg, 1);
 				i++;
+				cpt++;
 				break;
 			case 2:
 				s_arg = va_arg(varg, char*);
 				string_size = size_of_string(s_arg);
 				write(1, &s_arg, string_size);
 				i++;
+				for (tmp = 0; tmp < string_size; tmp++)
+				{
+					cpt++;
+				}
 				break;
 			case 3:
 				write(1, &c, 1);
+				cpt++;
 		}
 	}
+	return (cpt);
 }
 
 /**
