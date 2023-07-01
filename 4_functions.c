@@ -128,3 +128,61 @@ long int convert_unsigned(long int number, int size)
 	return ((unsigned int)number);
 }
 
+
+/**
+ * write_pointer - write
+ * @buff: buff
+ * @i: i
+ * @len: lenght
+ * @pad: pad
+ * @pa: pa
+ * @ech: ech
+ * @flag: flag
+ * @width: width
+ * Return: int
+ */
+
+int write_pointer(char buff[], int i, int len,
+		int width, int flag, char pad, char ech, int pa)
+{
+	int ii;
+
+	if (width > len)
+	{
+		for (ii = 3; ii < width - len + 3; ii++)
+			buff[ii] = pad;
+		buff[ii] = '\0';
+		if (flag & F_M && pad == ' ')
+		{
+			buff[--i] = 'x';
+			buff[--i] = '0';
+			if (ech)
+				buff[--i] = ech;
+			return (write(1, &buff[i], len) + write(1,
+						&buff[3], ii - 3));
+		}
+		else if (!(flag & F_M) && pad == ' ')
+		{
+			buff[--i] = 'x';
+			buff[--i] = '0';
+			if (ech)
+				buff[--i] = ech;
+			return (write(1, &buff[3], ii - 3) + write(1, &buff[i], len));
+		}
+		else if (!(flag & F_M) && pad == '0')
+		{
+			if (ech)
+				buff[--pa] = ech;
+			buff[1] = '0';
+			buff[2] = 'x';
+			return (write(1, &buff[pa], ii - pa) + write(1,
+						&buff[i], len - (1 - pa) - 2));
+		}
+	}
+	buff[--i] = 'x';
+	buff[--i] = '0';
+	if (ech)
+		buff[--i] = ech;
+	return (write(1, &buff[i], BUFF_LIMIT - i - 1));
+}
+

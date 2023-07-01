@@ -54,11 +54,12 @@ int _print_rot13string(va_list, char[], int, int, int, int);
 long int convert_number(long int, int);
 long int convert_unsigned(long int, int);
 int write_unsigned(int is_negative, int ind,
-		char buffer[],int flags,
+		char buffer[], int flags,
 		int width, int precision, int size);
-int _digit(char );
 
-
+int _digit(char);
+int _printable(char);
+int hx(char, char[], int);
 int _flag(const char *, int *);
 int _width(const char *, int *, va_list);
 int _precision(const char *, int *, va_list);
@@ -66,6 +67,9 @@ int _size(const char *, int *);
 
 int write_number(int, int, char[], int, int, int, int);
 int write_num(int, char[], int, int, int, int, char, char);
+int write_pointer(char buff[], int i, int len,
+		int width, int flag, char pad, char ech, int pa);
+
 
 #define MACR1 2
 #define MACR2 1
