@@ -165,3 +165,43 @@ int _print_int(va_list varg, char buff[], int flag,
 	return (write_number(_negative, i, buff, flag, width, precision, size));
 }
 
+
+/**
+ * _print_binary -bin
+ * @varg: arg
+ * @buff: buff
+ * @flag: flag
+ * @width: width
+ * @precision: precision
+ * @size: size
+ * Return: nb
+ */
+
+int _print_binary(va_list varg, char buff[], int flag,
+		int width, int precision, int size)
+{
+	unsigned int x, y, j, sm, i[32];
+	int count;
+	char a;
+
+	x = va_arg(varg, unsigned int);
+	y = 2147483648;
+	i[0] = x / y;
+	for (j = 1; j < 32; j++)
+	{
+		y /= 2;
+		i[j] = (x / y) % 2;
+	}
+	for (j = 0, sm = 0, count = 0; j < 32; j++)
+	{
+		sm += i[j];
+		if (sm || j == 31)
+		{
+			a = '0' + i[j];
+			write(1, &z, 1);
+			count++;
+		}
+	}
+	return (count);
+}
+

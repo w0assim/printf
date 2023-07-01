@@ -51,7 +51,7 @@ int write_num(int i, char buff[], int flag, int width,
 	int ln, padd = 1;
 
 	if (precision == 0 && i == BUFF_LIMIT - 2 && buff[i] == '0' && width == 0)
-		return ();
+		return (0);
 	if (precision == 0 && i == BUFF_LIMIT - 2 && buff[i] == '0')
 		buff[i] = tmp = ' ';
 	if (precision > 0 && precision < len)
@@ -86,7 +86,7 @@ int write_num(int i, char buff[], int flag, int width,
 		}
 	}
 	if (ech)
-		buffer[--i] = ech;
+		buff[--i] = ech;
 	return (write(1, &buff[i], len));
 }
 

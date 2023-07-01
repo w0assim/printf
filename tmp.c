@@ -39,7 +39,7 @@ int _print_formatted(const char *format, int *i, va_list varg, char buff[],
 		{'i', _print_int}, {'d', _print_int}, {'b', _print_binary},
 		{'u', _print_unsigned}, {'o', _print_octal}, {'x', _print_hexa},
 		{'X', _print_hexa_upper}, {'p', _print_pointer}, {'S', _print_non_printable},
-		{'r', _print_reverse}, {'R', _print_rot13string}, {'\0', NULL}
+		{'r', _print_string_reversed}, {'R', _print_rot13string}, {'\0', NULL}
 	};
 
 	len = 0;
