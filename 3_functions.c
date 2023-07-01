@@ -53,7 +53,7 @@ int _precision(const char *format, int *i, va_list varg)
 		if (_digit(format[ii]))
 		{
 			precision *= 10;
-			precision += fornat[ii] - '0';
+			precision += format[ii] - '0';
 		}
 		else if (format[ii] == '*')
 		{
