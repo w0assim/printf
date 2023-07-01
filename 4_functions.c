@@ -90,3 +90,24 @@ int write_num(int i, char buff[], int flag, int width,
 	return (write(1, &buff[i], len));
 }
 
+
+/**
+ * convert_number -converting
+ * @n: numb
+ * @size: size
+ * Return: converted
+ */
+
+long int convert_number(long int n, int size)
+{
+	if (size == MACR1)
+	{
+		return (n);
+	}
+	else if (size == MACR2)
+	{
+		return ((short)n);
+	}
+	return ((int)n);
+}
+

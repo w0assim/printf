@@ -21,7 +21,7 @@ typedef struct p
 
 int _printf(const char *format, ...);
 void _print_buffer(char buff[], int *buff_size);
-int _print_formatted(consg char *, int*, va_list,
+int _print_formatted(const char *, int*, va_list,
 		char[], int, int, int, int);
 
 int _print_char(va_list varg, char buff[], int flag,
@@ -50,8 +50,8 @@ int _print_pointer(va_list varg, char buff[], int flag,
 		int width, int precision, int size);
 int _print_string_reversed(va_list, char[], int,
 		int, int, int);
-int _print_rot13string(va_listm char[], int, int, int, int);
-
+int _print_rot13string(va_list char[], int, int, int, int);
+long int convert_number(long int, int);
 
 int _flag(const char *, int *);
 int _width(const char *, int *, va_list);
@@ -61,7 +61,8 @@ int _size(const char *, int *);
 int write_number(int, int, char[], int, int, int, int);
 int write_num(int, char[], int, int, int, int, char, char);
 
-
+#define MACR1 2
+#define MACR2 1
 #define F_P 2
 #define F_S 16
 #define F_Z 4
