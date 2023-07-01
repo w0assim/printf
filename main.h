@@ -52,6 +52,12 @@ int _print_string_reversed(va_list, char[], int,
 		int, int, int);
 int _print_rot13string(va_list, char[], int, int, int, int);
 long int convert_number(long int, int);
+long int convert_unsigned(long int, int);
+int write_unsgnd(int is_negative, int ind,
+		char buffer[],int flags,
+		int width, int precision, int size);
+
+
 
 int _flag(const char *, int *);
 int _width(const char *, int *, va_list);

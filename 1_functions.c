@@ -101,3 +101,42 @@ int _print_hexa_upper(va_list varg, char buff[], int flag,
 				buff, flag, 'X', width, precision, size));
 }
 
+
+/**
+ * _print_hexadecimal - demkj
+ * @varg: arg
+ * @rnd: rnd
+ * @buff: buffer
+ * @flag: flag
+ * @ech: ech
+ * @width: width
+ * @precision: precision
+ * @size: size
+ * Return: int
+ */
+
+int _print_hexadecimal(va_list varg, char rnd[], char buff[], int flag,
+		char ech, int width, int precision, int size)
+{
+	int i = BUFF_LIMIT - 2;
+	unsigned long int n = va_arg(varg, unsigned long int);
+	unsigned long int s = n;
+
+	n = convert_unsigned(n, size);
+	if (n == 0)
+		buff[i--] = '0';
+	buff[BUFF_LIMIT - 1] = '\0';
+	while (n > 0)
+	{
+		buff[i--] = rnd[n % 16];
+		n /= 16;
+	}
+	if (flag & f_H && s != 0)
+	{
+		buff[i--] = ech;
+		buffer[i--] = '0';
+	}
+	i++;
+	return (write_unsigned(0, i, buff, flag, width, precision, size));
+}
+

@@ -111,3 +111,20 @@ long int convert_number(long int n, int size)
 	return ((int)n);
 }
 
+
+/**
+ * convert_unsigned -convrt unsigned
+ * @number: nb to cnvrt
+ * @size: size
+ * Return: long int
+ */
+
+long int convert_unsigned(unsigned long int number, int size)
+{
+	if (size == MACR1)
+		return (number);
+	else if (size == MACR2)
+		return ((unsigned short)number);
+	return ((unsigned int)number);
+}
+
