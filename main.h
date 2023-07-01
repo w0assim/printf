@@ -58,7 +58,12 @@ int _width(const char *, int *, va_list);
 int _precision(const char *, int *, va_list);
 int _size(const char *, int *);
 
+int write_number(int, int, char[], int, int, int, int);
+int write_num(int, char[], int, int, int, int, char, char);
 
+
+#define F_P 2
+#define F_S 16
 #define F_Z 4
 #define F_M 1
 #define UNUSED(x) (void)(x)

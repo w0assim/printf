@@ -138,4 +138,30 @@ int _print_percent(va_list varg, char buff[], int flag,
  * Return: int
  */
 
-int _print_int
+int _print_int(va_list varg, char buff[], int flag,
+		int width, int precision, int size)
+{
+	int i = BUFF_LIMIT - 2;
+	int _negative = 0;
+	long int n = va_arg(varg, long int);
+	unsigned long int nn;
+
+	n = convert_number(n, size);
+	if (n == 0)
+		buff[i--] = '0';
+	buff[BUFF_LIMIT - 1] = '\0';
+	nn = (unsigned long int)n;
+	if (n < 0)
+	{
+		nn = (unsigned long int)((-1) * n);
+		_negative = 1;
+	}
+	while (nn > 0)
+	{
+		buff[i--] = (nn % 10) + '0';
+		nn /= 10;
+	}
+	i++;
+	return (write_number(_negative, i, buff, flag, width, precision, size));
+}
+
