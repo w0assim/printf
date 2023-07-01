@@ -15,12 +15,12 @@ int _print_unsigned(va_list varg, char buff[], int flag,
 		int width, int precision, int size)
 {
 	int j = BUFF_LIMIT - 2;
-	unsigned long int n = va_atg(varg, unsigned long int);
+	unsigned long int n = va_arg(varg, unsigned long int);
 
 	n = convert_unsigned(n, size);
 	if (n == 0)
 		buff[j--] = '0';
-	buff[BUFFER_LIMIT - 1] = '\0';
+	buff[BUFF_LIMIT - 1] = '\0';
 	while (n > 0)
 	{
 		buff[j--] = (n % 10) + '0';
@@ -52,7 +52,7 @@ int _print_octal(va_list varg, char buff[], int flag,
 	n = convert_unsigned(n, size);
 	if (n == 0)
 		buff[i--] = '0';
-	buff[BUFFER_LIMIT - 1] = '\0';
+	buff[BUFF_LIMIT - 1] = '\0';
 	while (n > 0)
 	{
 		buff[i--] = (n % 8) + '0';
@@ -131,10 +131,10 @@ int _print_hexadecimal(va_list varg, char rnd[], char buff[], int flag,
 		buff[i--] = rnd[n % 16];
 		n /= 16;
 	}
-	if (flag & f_H && s != 0)
+	if (flag & F_H && s != 0)
 	{
 		buff[i--] = ech;
-		buffer[i--] = '0';
+		buff[i--] = '0';
 	}
 	i++;
 	return (write_unsigned(0, i, buff, flag, width, precision, size));

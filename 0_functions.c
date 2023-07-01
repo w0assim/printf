@@ -184,6 +184,11 @@ int _print_binary(va_list varg, char buff[], int flag,
 	int count;
 	char a;
 
+	UNUSED(flag);
+	UNUSED(buff);
+	UNUSED(width);
+	UNUSED(precision);
+	UNUSED(size);
 	x = va_arg(varg, unsigned int);
 	y = 2147483648;
 	i[0] = x / y;
@@ -198,7 +203,7 @@ int _print_binary(va_list varg, char buff[], int flag,
 		if (sm || j == 31)
 		{
 			a = '0' + i[j];
-			write(1, &z, 1);
+			write(1, &a, 1);
 			count++;
 		}
 	}

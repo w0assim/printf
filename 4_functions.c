@@ -119,7 +119,7 @@ long int convert_number(long int n, int size)
  * Return: long int
  */
 
-long int convert_unsigned(unsigned long int number, int size)
+long int convert_unsigned(long int number, int size)
 {
 	if (size == MACR1)
 		return (number);

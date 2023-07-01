@@ -13,7 +13,7 @@ int _flag(const char *format, int *i)
 	int ii;
 	int flags = 0;
 	int j;
-	const char iddd[] = {'-', '+', '0', '#', ' ', '\0'}
+	const char iddd[] = {'-', '+', '0', '#', ' ', '\0'};
 	const int idd[] = {F_M, F_P, F_Z, F_H, F_S, 0};
 
 	for (ii = *i + 1; format[ii] != '\0'; ii++)
@@ -50,7 +50,7 @@ int _precision(const char *format, int *i, va_list varg)
 	precision = 0;
 	for (ii *= 1; format[ii] != '\0'; ii++)
 	{
-		if (_digit(fornat[ii]))
+		if (_digit(format[ii]))
 		{
 			precision *= 10;
 			precision += fornat[ii] - '0';
